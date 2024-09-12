@@ -1,0 +1,186 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void final_bom();
+void final_neutro();
+void final_ruim();
+void capitulo1(int &vida, bool &itemEspecial);
+void capitulo2(int &vida, bool &itemEspecial);
+void capitulo3(int &vida, bool &itemEspecial);
+void capitulo4(int &vida, bool &itemEspecial);
+void capitulo5(int &vida, bool &itemEspecial);
+void capitulo6(int &vida, bool &itemEspecial);
+
+int main() {
+    int vida = 100; 
+    bool itemEspecial = false;
+    string nome;
+    
+    cout << "Bem-vindo ao RPG de Texto: O Enigma da Aurora!" << endl;
+    cout << "Digite seu nome, mais novo aventureiro/a. " << endl;
+    cin >> nome;
+    cout << "Sua jornada começa agora " << nome <<  ", faca suas escolhas com sabedoria." << endl;
+    
+    capitulo1(vida, itemEspecial);
+    
+    return 0;
+}
+
+void capitulo1(int &vida, bool &itemEspecial) {
+    int escolha;
+    
+    cout << "\nCapítulo 1: A Entrada na Floresta" << endl;
+    cout << "Você está diante de uma floresta densa. Dizem que há mistérios e uma mágia extraodirnária dentro dela, a decisão e sua." << endl;
+    cout << "1. Entrar na floresta" << endl;
+    cout << "2. Voltar para a vila" << endl;
+    cout << "Escolha uma opção (1 ou 2): ";
+    cin >> escolha;
+    
+    if (escolha == 1) {
+        cout << "\nVocê decide entrar na floresta. O silencio é ensurdecedor, até que as flores ao seu redor começam a susurrar por ajuda! " << endl;
+        capitulo2(vida, itemEspecial);
+    } else if (escolha == 2) {
+        cout << "\nVocê volta para a vila, mas sente que perdeu uma grande oportunidade. O jogo termina aqui." << endl;
+        final_neutro();
+    } else {
+        cout << "\nEscolha inválida. Tente novamente." << endl;
+        capitulo1(vida, itemEspecial);
+    }
+}
+
+void capitulo2(int &vida, bool &itemEspecial) {
+    int escolha;
+    
+    cout << "\nCapítulo 2: Ecos do Desconhecido" << endl;
+    cout << "As vozes ficam cada veez mais baixas como se estivessem chamando voce para algum lugar. Voce avista de longe, o que parece ser uma casa abandonada no meio de muita névoa." << endl;
+    cout << "1. Seguir para o meio da floresta e deixar pra la os sussuros. " << endl;
+    cout << "2. Ir afundo para descobrir o que ha na suposta casa. " << endl;
+    cout << "Escolha uma opção (1 ou 2): ";
+    cin >> escolha;
+    
+    if (escolha == 1) {
+        cout << "\nVocê segue pela floresta, mas tropeça em uma armadilha e perde 20 pontos de vida." << endl;
+        vida -= 20;
+        capitulo3(vida, itemEspecial);
+    } else if (escolha == 2) {
+        cout << "\nAo chegar perto da casa, muitas borboletas começam a voar ao redor de voce, guiando voce até a entrada da casa. " << endl;
+        itemEspecial = true;
+        capitulo3(vida, itemEspecial);
+    } else {
+        cout << "\nEscolha inválida. Tente novamente." << endl;
+        capitulo2(vida, itemEspecial);
+    }
+}
+
+void capitulo3(int &vida, bool &itemEspecial) {
+    int escolha;
+    
+    cout << "\nCapítulo 3: O Baú dos Segredos" << endl;
+    cout << "Você abre a porta e da de cara com um milhao de espelhos em sua volta. As portas se fecham e uma luz acende revelando um baú enorme!" << endl;
+    cout << "1. Abrir o misterioso baú. " << endl;
+    cout << "2. Sair correndo a procura da saida da casa encantada. " << endl;
+    cout << "Escolha uma opção (1 ou 2): ";
+    cin >> escolha;
+    
+    cout << "testando item especial " << itemEspecial << endl;
+    
+    if (escolha == 1 && itemEspecial) {
+        cout << "\nDentro do baú voce acha um item especial e uma carta escrita por Aurora com um pedido de ajuda desesperador." << endl;
+        capitulo4(vida, itemEspecial);
+    } else if (escolha == 2 ) {
+        cout << "\nCom uma tentativa falha de sair da casa encantada, voce acaba batendo a cabeca em um espelho e desmaiando logo em seguida! " << endl;
+        vida -= 30;
+        capitulo4(vida, itemEspecial);
+    } else {
+        cout << "\nEscolha inválida. Tente novamente." << endl;
+        capitulo3(vida, itemEspecial);
+    }
+}
+
+void capitulo4(int &vida, bool &itemEspecial) {
+    int escolha;
+    
+    cout << "\nCapítulo 4: O Confronto Final" << endl;
+    cout << "A carta de Aurora dizia que ela havia sido sequestrada ha muitos anos, pos sua madrasta malvada, e esta presa dentro de um dos diversos espelhos da casa. " << endl;
+    cout << "1. Pegar o item magico e ir atras de Aurora." << endl;
+    cout << "2. Jogar a carta de Aurora fora e voltar para a vila." << endl;
+    cout << "Escolha uma opção (1 ou 2): ";
+    cin >> escolha;
+    
+    if (escolha == 1) {
+        cout << "\nVocê chega a uma clareira onde um monstro gigante aparece. Você tem poucas opções." << endl;
+        capitulo5(vida, itemEspecial);
+    } else if (escolha == 2) {
+        cout << "\nVoce é morto no caminho de volta pra vila e tem um final desastroso e miseravel!" << endl;
+        capitulo5(vida,itemEspecial);
+    } else {
+        cout << "\nEscolha inválida. Tente novamente." << endl;
+        capitulo4(vida, itemEspecial);
+    }
+}
+
+void capitulo5(int &vida, bool &itemEspecial) {
+    int escolha;
+    
+    cout << "\nCapítulo 5: O Confronto Final" << endl;
+    cout << "1. Usar o item especial (se tiver)" << endl;
+    cout << "2. Lutar com o monstro" << endl;
+    cout << "3. Tentar fugir" << endl;
+    cout << "Escolha uma opção (1, 2 ou 3): ";
+    cin >> escolha;
+    
+    if (escolha == 1 && itemEspecial) {
+        cout << "\nVocê usa o item especial, que revela ser uma arma poderosa. Você derrota o monstro facilmente, e continua sua busca atras de aurora!" << endl;
+        capitulo6(vida,itemEspecial);
+    } else if (escolha == 2) {
+        cout << "\nVocê decide lutar com o monstro, mas ele é muito forte. Você perde 50 pontos de vida." << endl;
+        capitulo6(vida,itemEspecial);
+    vida -= 50;
+        vida -= 50;
+        if (vida > 0) {
+            final_neutro();
+        } else {
+            final_ruim();
+        }
+    } else if (escolha == 3) {
+        cout << "\nVocê tenta fugir, mas o monstro é mais rápido. Você é derrotado." << endl;
+        final_ruim();
+    } else {
+        cout << "\nEscolha inválida. Tente novamente." << endl;
+        capitulo4(vida, itemEspecial);
+    }
+}
+void capitulo6(int &vida, bool &itemEspecial) {
+    int escolha;
+    
+    cout << "\nCapítulo 6: O Último Sacrifício" << endl;
+    cout << "Em sua busca por Aurora, voce encontra um calabouso dentro da casa, onde aurora, praticamente sem forças grita por ajuda. Para ajudar e salvar Aurora voce precisara se arrsicar e passar por uma ponte ou descer por uma corda ate alcançala.  " << endl;
+    cout << "1. Escolher o caminho da ponte e ir atras de Aurora." << endl;
+    cout << "2. Escolher descer pela corda para socorrer Aurora." << endl;
+    cout << "Escolha uma opção (1 ou 2): ";
+    cin >> escolha;
+    
+    if (escolha == 1 && itemEspecial) {
+        cout << "\nVocê começa a atravessar a ponte devagar, mas infelimente ela se quebra e voce cai direto para um morte dolorosa." << endl;
+        final_ruim();
+    } else if (escolha == 2) {
+        cout << "\nVoce conclui sua descida pela corda com muito sucesso e salva Aurora de um final tenebroso! " << endl;
+        final_bom();
+    } else {
+        cout << "\nEscolha inválida. Tente novamente." << endl;
+        capitulo4(vida, itemEspecial);
+    }
+}
+void final_bom() {
+    cout << "\nFINAL BOM: Você superou todos os desafios salvou Aurora de uma morte tragica com muita glória. Parabéns!" << endl;
+}
+
+void final_neutro() {
+    cout << "\nFINAL NEUTRO: Você sobreviveu aos perigos da floresta, mas sem muitas recompensas. Uma aventura medíocre." << endl;
+}
+
+void final_ruim() {
+    cout << "\nFINAL RUIM: Você foi derrotado pelos desafios da floresta. Sua jornada termina aqui." << endl;
+}
