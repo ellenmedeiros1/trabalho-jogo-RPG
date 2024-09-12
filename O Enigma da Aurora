@@ -84,15 +84,13 @@ void capitulo3(int &vida, bool &itemEspecial) {
     cout << "Escolha uma opção (1 ou 2): ";
     cin >> escolha;
     
-    cout << "testando item especial " << itemEspecial << endl;
     
     if (escolha == 1 && itemEspecial) {
         cout << "\nDentro do baú voce acha um item especial e uma carta escrita por Aurora com um pedido de ajuda desesperador." << endl;
         capitulo4(vida, itemEspecial);
     } else if (escolha == 2 ) {
         cout << "\nCom uma tentativa falha de sair da casa encantada, voce acaba batendo a cabeca em um espelho e desmaiando logo em seguida! " << endl;
-        vida -= 30;
-        capitulo4(vida, itemEspecial);
+        final_neutro();
     } else {
         cout << "\nEscolha inválida. Tente novamente." << endl;
         capitulo3(vida, itemEspecial);
@@ -114,7 +112,7 @@ void capitulo4(int &vida, bool &itemEspecial) {
         capitulo5(vida, itemEspecial);
     } else if (escolha == 2) {
         cout << "\nVoce é morto no caminho de volta pra vila e tem um final desastroso e miseravel!" << endl;
-        capitulo5(vida,itemEspecial);
+        final_neutro();
     } else {
         cout << "\nEscolha inválida. Tente novamente." << endl;
         capitulo4(vida, itemEspecial);
